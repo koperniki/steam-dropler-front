@@ -9,9 +9,9 @@ export class RequesterService {
 
   constructor(private http: HttpClient) { }
 
-  public Request<T>(method: string, params: any) : Observable<T> {
+  public Request<T>(handler: string, method: string, params: any) : Observable<T> {
 
-    return this.http.post<T>("http://localhost:5000/api/"+method, params);
+    return this.http.post<T>("http://localhost:5000/api/"+handler+"/"+method, params);
     
   }
 

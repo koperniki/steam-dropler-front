@@ -9,9 +9,11 @@ import {  Account } from './models/account';
 })
 export class AccountApiService {
 
+  readonly handler: string = "account";
+
   constructor(private requester: RequesterService) { }
 
   public GetAccountList(): Observable<Account[]> {
-    return this.requester.Request("account-list", null);
+    return this.requester.Request(this.handler, "list", null);
   }
 }
