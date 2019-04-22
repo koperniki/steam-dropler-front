@@ -1,0 +1,35 @@
+<mat-toolbar>
+  <mat-toolbar-row>
+    <span>New Account</span>
+    <span class="spacer"></span>
+    <button mat-button  routerLink="../"><mat-icon aria-hidden="false" aria-label="back">backspace</mat-icon></button>
+  </mat-toolbar-row>
+</mat-toolbar>
+
+<div class="form-container">
+  <mat-form-field>
+    <input matInput placeholder="Enter user" [formControl]="user"  required>
+    <mat-error *ngIf="user.invalid">{{getErrorUser()}}</mat-error>
+  </mat-form-field>
+
+  <mat-form-field>
+    <input matInput placeholder="Enter password" [type]="hide ? 'password' : 'text'" [formControl]="pass"  required>
+    <mat-icon matSuffix (click)="hide = !hide">{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+    <mat-error *ngIf="pass.invalid">{{getErrorPass()}}</mat-error>
+  </mat-form-field>
+
+  <mat-form-field>
+    <input matInput placeholder="Enter email" [formControl]="email"  required>
+    <mat-error *ngIf="email.invalid">{{getErrorEmail()}}</mat-error>
+  </mat-form-field>
+  
+  <mat-form-field>
+    <mat-select placeholder="Select SteamGuard source" [formControl]="sgSource" required>
+      <mat-option value="option">Manual</mat-option>
+      <mat-option value="option">Email</mat-option>
+      <mat-option value="option">maFile</mat-option>
+    </mat-select>
+    <mat-error *ngIf="sgSource.invalid">{{getErrorSg()}}</mat-error>
+  </mat-form-field>
+
+</div>

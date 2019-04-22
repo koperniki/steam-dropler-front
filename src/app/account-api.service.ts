@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { RequesterService } from './requester.service';
 import { Observable } from 'rxjs';
-import {  Account } from './models/account';
+import {  IAccount } from './models/account';
 
 
 @Injectable({
@@ -13,7 +13,7 @@ export class AccountApiService {
 
   constructor(private requester: RequesterService) { }
 
-  public GetAccountList(): Observable<Account[]> {
+  public GetAccountList(): Observable<IAccount[]> {
     return this.requester.Request(this.handler, "list", null);
   }
 }

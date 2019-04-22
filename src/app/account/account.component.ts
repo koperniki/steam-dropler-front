@@ -2,7 +2,7 @@ import { Component, OnInit, ViewChild } from '@angular/core';
 import {MatPaginator, MatTableDataSource} from '@angular/material';
 
 import { AccountApiService } from '../account-api.service';
-import {Account} from '../models/account';
+import {IAccount} from '../models/account';
 
 @Component({
   selector: 'app-account',
@@ -11,7 +11,7 @@ import {Account} from '../models/account';
 })
 export class AccountComponent implements OnInit {
   displayedColumns: string[] = ['userName', 'status', 'edit'];
-  dataSource: MatTableDataSource<Account>;
+  dataSource: MatTableDataSource<IAccount>;
 
   @ViewChild(MatPaginator) paginator: MatPaginator;
 
@@ -19,7 +19,7 @@ export class AccountComponent implements OnInit {
 
   ngOnInit() {
     this.accountApi.GetAccountList().subscribe(t=>{
-      this.dataSource = new MatTableDataSource<Account>(t);
+      this.dataSource = new MatTableDataSource<IAccount>(t);
       this.dataSource.paginator = this.paginator;
       console.log(t);
     });

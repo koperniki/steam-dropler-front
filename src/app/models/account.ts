@@ -1,4 +1,4 @@
-export interface Account
+export interface IAccount
     {
         id: string;
 
@@ -6,7 +6,7 @@ export interface Account
 
         userName: string;
 
-        UuserPass: string;
+        userPass: string;
 
         email: string;
      
@@ -25,4 +25,33 @@ export interface Account
         steamGuardSource: number;
 
         maiConfigId: string;
+    }
+
+    export class SteamAccount
+    {
+        public id: string;
+
+        public status: string;
+
+        public userName: string;
+
+        public userPass: string;
+
+        public email: string;
+     
+        public registerDate: Date | string;
+
+        public deviceId: number | null;
+
+        public steamId: number | null;
+
+        public accountId: number | null;
+
+        public sentryHashExist: boolean;
+
+        public loginKey: string;
+
+        public steamGuardSource: number;
+
+        public maiConfigId: string;
     }
