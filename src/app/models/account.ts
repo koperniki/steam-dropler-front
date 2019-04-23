@@ -24,10 +24,10 @@ export interface IAccount
 
         steamGuardSource: number;
 
-        maiConfigId: string;
+        mailConfigId: string;
     }
 
-    export class SteamAccount
+    export class SteamAccount implements IAccount
     {
         public id: string;
 
@@ -53,5 +53,5 @@ export interface IAccount
 
         public steamGuardSource: number;
 
-        public maiConfigId: string;
+        public mailConfigId: string;
     }

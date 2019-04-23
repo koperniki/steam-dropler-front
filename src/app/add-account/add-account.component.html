@@ -2,6 +2,7 @@
   <mat-toolbar-row>
     <span>New Account</span>
     <span class="spacer"></span>
+    <button mat-button  (click)="saveAccount()"><mat-icon aria-hidden="false" aria-label="back">save</mat-icon></button>
     <button mat-button  routerLink="../"><mat-icon aria-hidden="false" aria-label="back">backspace</mat-icon></button>
   </mat-toolbar-row>
 </mat-toolbar>
@@ -25,11 +26,45 @@
   
   <mat-form-field>
     <mat-select placeholder="Select SteamGuard source" [formControl]="sgSource" required>
-      <mat-option value="option">Manual</mat-option>
-      <mat-option value="option">Email</mat-option>
-      <mat-option value="option">maFile</mat-option>
+      <mat-option value="manual">Manual</mat-option>
+      <mat-option value="email">Email</mat-option>
+      <mat-option value="mafile">maFile</mat-option>
     </mat-select>
     <mat-error *ngIf="sgSource.invalid">{{getErrorSg()}}</mat-error>
   </mat-form-field>
+
+  <mat-toolbar *ngIf="sgSource.value == 'email'">
+    <mat-toolbar-row>
+      <span>Email config</span>
+    </mat-toolbar-row>
+  </mat-toolbar>
+
+
+  <mat-form-field *ngIf="sgSource.value == 'email'">
+    <input matInput placeholder="Enter mail user" [formControl]="mailUser"  required>
+    <mat-error *ngIf="mailUser.invalid">{{getErrorMailUser()}}</mat-error>
+  </mat-form-field>
+
+  <mat-form-field *ngIf="sgSource.value == 'email'">
+    <input matInput placeholder="Enter mail password" [type]="hide ? 'password' : 'text'" [formControl]="mailPass"  required>
+    <mat-icon matSuffix (click)="hide = !hide">{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+    <mat-error *ngIf="mailPass.invalid">{{getErrorMailPass()}}</mat-error>
+  </mat-form-field>
+
+  <mat-form-field *ngIf="sgSource.value == 'email'">
+    <input matInput placeholder="Enter mail server" [formControl]="mailServer"  required>
+    <mat-error *ngIf="mailServer.invalid">{{getErrorMailServer()}}</mat-error>
+  </mat-form-field>
+
+  
+  <mat-form-field *ngIf="sgSource.value == 'email'">
+    <input matInput placeholder="Enter mail port" [formControl]="mailPort" type="number"  required>
+    <mat-error *ngIf="mailPort.invalid">{{getErrorMailPort()}}</mat-error>
+  </mat-form-field>
+
+
+
+
+
 
 </div>
