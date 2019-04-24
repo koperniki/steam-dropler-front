@@ -4,7 +4,7 @@ import { HttpClientModule } from '@angular/common/http';
 
 import { MatTableModule, MatPaginatorModule, MatToolbarModule, 
 MatIconModule, MatButtonModule, MatFormFieldModule, MatInputModule, 
-MatOptionModule, MatSelectModule } from '@angular/material';
+MatOptionModule, MatSelectModule, MatSnackBarModule } from '@angular/material';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 
 import { AppComponent } from './app.component';
@@ -13,8 +13,10 @@ import { AppRoutingModule } from './app-routing.module';
 
 import { RequesterService } from './requester.service';
 import { AccountApiService } from './account-api.service';
+import { ToasterService } from './toaster.service';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { AddAccountComponent } from './add-account/add-account.component';
+
 
 @NgModule({
   declarations: [
@@ -37,9 +39,10 @@ import { AddAccountComponent } from './add-account/add-account.component';
     FormsModule,
     ReactiveFormsModule,
     MatOptionModule,
-    MatSelectModule
+    MatSelectModule,
+    MatSnackBarModule
   ],
-  providers: [RequesterService, AccountApiService],
+  providers: [RequesterService, AccountApiService, ToasterService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

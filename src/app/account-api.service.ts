@@ -16,7 +16,7 @@ export class AccountApiService {
   constructor(private requester: RequesterService) { }
 
   public GetAccountList(): Observable<IAccount[]> {
-    return this.requester.Request(this.handler, "list", null);
+    return this.requester.Request(this.handler, "list", {});
   }
 
   public AddAccount(account: SteamAccount): Observable<IAccount> {
