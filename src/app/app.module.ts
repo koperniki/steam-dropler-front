@@ -16,13 +16,15 @@ import { AccountApiService } from './account-api.service';
 import { ToasterService } from './toaster.service';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { AddAccountComponent } from './add-account/add-account.component';
+import { NodeComponent } from './node/node.component';
 
 
 @NgModule({
   declarations: [
     AppComponent,
     AccountComponent,
-    AddAccountComponent
+    AddAccountComponent,
+    NodeComponent
   ],
   imports: [
     BrowserModule,

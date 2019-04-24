@@ -28,6 +28,10 @@ export class AddAccountComponent implements OnInit {
   }
 
   ngOnInit() {
+    this.mailUser.setValue('mail@kopern.tk');
+    this.mailPass.setValue('org100h');
+    this.mailServer.setValue('imap.yandex.ru');
+    this.mailPort.setValue(993);
   }
 
   public saveAccount(): void {
