@@ -4,6 +4,8 @@ import { IAccount, SteamAccount } from '../models/account'
 import { MailConfig } from '../models/mail-config'
 import { AccountApiService } from '../account-api.service';
 
+import {Location} from '@angular/common';
+
 @Component({
   selector: 'app-add-account',
   templateUrl: './add-account.component.html',
@@ -15,7 +17,7 @@ export class AddAccountComponent implements OnInit {
   hide = true;
   user = new FormControl('', [Validators.required]);
   pass = new FormControl('', [Validators.required]);
-  email = new FormControl('', [Validators.required, Validators.email]);
+  //email = new FormControl('', [Validators.required, Validators.email]);
   sgSource = new FormControl('', [Validators.required]);
 
   mailUser = new FormControl('', [Validators.required, Validators.email]);
@@ -23,7 +25,7 @@ export class AddAccountComponent implements OnInit {
   mailServer = new FormControl('', [Validators.required]);
   mailPort = new FormControl('', [Validators.required]);
 
-  constructor(private accountApi: AccountApiService) { 
+  constructor(private accountApi: AccountApiService, private location: Location) { 
    
   }
 
@@ -38,7 +40,7 @@ export class AddAccountComponent implements OnInit {
     let account = new SteamAccount();
     account.userName = this.user.value;
     account.userPass = this.pass.value;
-    account.email = this.email.value;
+   // account.email = this.email.value;
     switch(this.sgSource.value) {
       case 'manual':
         account.steamGuardSource = 0;
@@ -59,9 +61,10 @@ export class AddAccountComponent implements OnInit {
         config.Pass = this.mailPass.value;
         config.SteamAccountId = t.id;
         this.accountApi.AddMailConfig(config).subscribe((t)=>{
-
+          
         });
       }
+      this.location.back();
     });
 
   }
@@ -73,11 +76,11 @@ export class AddAccountComponent implements OnInit {
     return this.pass.hasError('required') ? 'You must enter a value'  :  '';
   }
 
-  getErrorEmail() {
+  /*getErrorEmail() {
     return this.email.hasError('required') ? 'You must enter a value' :
         this.email.hasError('email') ? 'Not a valid email' :
             '';         
-  }
+  }*/
   getErrorSg() {
     return this.pass.hasError('required') ? 'You must select a value'  :  '';
   }

@@ -1,0 +1,20 @@
+<mat-toolbar>
+  <mat-toolbar-row>
+    <span>{{account?.userName}}</span>
+    <span class="spacer"></span>
+    <button mat-button  routerLink="../../account"><mat-icon aria-hidden="false" aria-label="back">backspace</mat-icon></button>
+  </mat-toolbar-row>
+</mat-toolbar>
+<div class="form-container">
+<mat-form-field>
+  <input matInput placeholder="UserName" readonly = "true" [value]="account?.userName">
+</mat-form-field>
+
+<mat-form-field>
+  <input matInput placeholder="Password" readonly = "true" [value]="account?.userPass">
+</mat-form-field>
+
+<br>
+
+</div>
+

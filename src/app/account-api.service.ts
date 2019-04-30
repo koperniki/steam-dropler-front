@@ -26,4 +26,8 @@ export class AccountApiService {
   public AddMailConfig(config: MailConfig): Observable<IMailConfig> {
     return this.requester.Request(this.handler, "add_mail_config", config);
   }
+
+  public ReadAccount(id: string): Observable<IAccount> {
+    return this.requester.Request(this.handler, "read", {id});
+  }
 }

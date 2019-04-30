@@ -17,6 +17,7 @@ import { ToasterService } from './toaster.service';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { AddAccountComponent } from './add-account/add-account.component';
 import { NodeComponent } from './node/node.component';
+import { AccountInfoComponent } from './account-info/account-info.component';
 
 
 @NgModule({
@@ -24,7 +25,8 @@ import { NodeComponent } from './node/node.component';
     AppComponent,
     AccountComponent,
     AddAccountComponent,
-    NodeComponent
+    NodeComponent,
+    AccountInfoComponent
   ],
   imports: [
     BrowserModule,
