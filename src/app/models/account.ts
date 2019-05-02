@@ -1,3 +1,6 @@
+import { GameOwnedInfo } from "./game-owned-info";
+
+
 export interface IAccount
     {
         id: string;
@@ -25,6 +28,8 @@ export interface IAccount
         steamGuardSource: number;
 
         mailConfigId: string;
+
+        gamesInfo: GameOwnedInfo[]
     }
 
     export class SteamAccount implements IAccount
@@ -54,4 +59,6 @@ export interface IAccount
         public steamGuardSource: number;
 
         public mailConfigId: string;
+
+        public gamesInfo: GameOwnedInfo[]
     }
