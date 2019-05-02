@@ -24,4 +24,17 @@ export class AccountInfoComponent implements OnInit {
 
   }
 
+  public initAccount():void {
+    this.accountApi.InitialLogin(this.accountId).subscribe(t=>
+      {
+        if (t === 1){
+          this.accountApi.ReadAccount(this.accountId).subscribe(acc=>{
+            this.account = acc;
+          });
+        }
+      }     
+    );
+  }
+
+
 }

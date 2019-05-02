@@ -14,7 +14,19 @@
   <input matInput placeholder="Password" readonly = "true" [value]="account?.userPass">
 </mat-form-field>
 
+
 <br>
+
+<button *ngIf="!account.steamId" mat-raised-button (click)="initAccount()">InitAccount</button>
+
+
+<mat-form-field *ngIf="account.steamId">
+  <input matInput placeholder="SteamId" readonly = "true" [value]="account?.steamId">
+</mat-form-field>
+
+<mat-form-field *ngIf="account.steamId">
+  <input matInput placeholder="AccountId" readonly = "true" [value]="account?.accountId">
+</mat-form-field>
 
 </div>
 

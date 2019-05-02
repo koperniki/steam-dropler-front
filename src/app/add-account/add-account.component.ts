@@ -5,6 +5,7 @@ import { MailConfig } from '../models/mail-config'
 import { AccountApiService } from '../account-api.service';
 
 import {Location} from '@angular/common';
+import { MaFileConfig } from '../models/mafile-config';
 
 @Component({
   selector: 'app-add-account',
@@ -17,13 +18,16 @@ export class AddAccountComponent implements OnInit {
   hide = true;
   user = new FormControl('', [Validators.required]);
   pass = new FormControl('', [Validators.required]);
-  //email = new FormControl('', [Validators.required, Validators.email]);
+  email = new FormControl('', [Validators.required, Validators.email]);
   sgSource = new FormControl('', [Validators.required]);
 
   mailUser = new FormControl('', [Validators.required, Validators.email]);
   mailPass = new FormControl('', [Validators.required]);
   mailServer = new FormControl('', [Validators.required]);
   mailPort = new FormControl('', [Validators.required]);
+
+
+  maFileStr: string = null;
 
   constructor(private accountApi: AccountApiService, private location: Location) { 
    
@@ -36,11 +40,21 @@ export class AddAccountComponent implements OnInit {
     this.mailPort.setValue(993);
   }
 
+  public addFile(event: any): void {
+    this.maFileStr = null;
+    let file = event.target.files[0];
+    let fileReader = new FileReader();
+    fileReader.onload = (e) => {
+      this.maFileStr = fileReader.result.toString();
+    }
+    fileReader.readAsText(file);
+  }
+
   public saveAccount(): void {
     let account = new SteamAccount();
     account.userName = this.user.value;
     account.userPass = this.pass.value;
-   // account.email = this.email.value;
+    account.email = this.email.value;
     switch(this.sgSource.value) {
       case 'manual':
         account.steamGuardSource = 0;
@@ -61,10 +75,20 @@ export class AddAccountComponent implements OnInit {
         config.Pass = this.mailPass.value;
         config.SteamAccountId = t.id;
         this.accountApi.AddMailConfig(config).subscribe((t)=>{
-          
+          this.location.back();
         });
+      } else if (account.steamGuardSource === 2) {
+        let maconf = new MaFileConfig();
+        maconf.body = this.maFileStr;
+        maconf.SteamAccountId = t.id;
+        this.accountApi.AddMaFileConfig(maconf).subscribe((t)=>{
+          this.location.back();
+        });
+
+      } else {
+        this.location.back();
       }
-      this.location.back();
+      
     });
 
   }
@@ -76,11 +100,11 @@ export class AddAccountComponent implements OnInit {
     return this.pass.hasError('required') ? 'You must enter a value'  :  '';
   }
 
-  /*getErrorEmail() {
+  getErrorEmail() {
     return this.email.hasError('required') ? 'You must enter a value' :
         this.email.hasError('email') ? 'Not a valid email' :
             '';         
-  }*/
+  }
   getErrorSg() {
     return this.pass.hasError('required') ? 'You must select a value'  :  '';
   }

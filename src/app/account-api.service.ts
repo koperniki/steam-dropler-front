@@ -3,6 +3,7 @@ import { RequesterService } from './requester.service';
 import { Observable } from 'rxjs';
 import {  IAccount, SteamAccount } from './models/account';
 import {  MailConfig, IMailConfig } from './models/mail-config';
+import { IMafileConfig, MaFileConfig } from './models/mafile-config';
 
 
 
@@ -27,7 +28,15 @@ export class AccountApiService {
     return this.requester.Request(this.handler, "add_mail_config", config);
   }
 
+  public AddMaFileConfig(config: MaFileConfig): Observable<IMafileConfig> {
+    return this.requester.Request(this.handler, "add_mafile_config", config);
+  }
+
   public ReadAccount(id: string): Observable<IAccount> {
     return this.requester.Request(this.handler, "read", {id});
+  }
+
+  public InitialLogin(id: string): Observable<number> {
+    return this.requester.Request(this.handler, "initial_login", {id});
   }
 }
