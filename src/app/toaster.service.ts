@@ -18,4 +18,14 @@ export class ToasterService {
          
       });
   }
+
+  showInfo(msg: string) {
+    this.snackBar.open(msg, null, {
+        duration: 3000,
+        horizontalPosition: 'center',
+        verticalPosition: 'top',
+        panelClass: ['blue-snackbar']
+       
+    });
+}
 }

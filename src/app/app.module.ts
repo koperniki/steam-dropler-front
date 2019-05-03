@@ -18,7 +18,7 @@ import { ToasterService } from './toaster.service';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { AddAccountComponent } from './add-account/add-account.component';
 import { NodeComponent } from './node/node.component';
-import { AccountInfoComponent } from './account-info/account-info.component';
+import { AccountInfoComponent, DialogSetDropConfig } from './account-info/account-info.component';
 import { DropConfigComponent, DialogDropConfig } from './drop-config/drop-config.component';
 
 
@@ -31,9 +31,14 @@ import { DropConfigComponent, DialogDropConfig } from './drop-config/drop-config
     AccountInfoComponent,
     DropConfigComponent,
     DialogDropConfig,
-    
+    DialogSetDropConfig
   ],
-  entryComponents: [DialogDropConfig, DropConfigComponent],
+  entryComponents: [
+    DialogDropConfig, 
+    DropConfigComponent, 
+    DialogSetDropConfig, 
+    AccountInfoComponent 
+  ],
   imports: [
     BrowserModule,
     AppRoutingModule,

@@ -3,6 +3,8 @@ import { IDropConfig, DropConfig } from '../models/drop-config';
 import { MatTableDataSource } from '@angular/material';
 import { DropConfigService } from '../drop-config.service';
 import {MatDialog, MatDialogRef, MAT_DIALOG_DATA} from '@angular/material';
+import { SetDropConfig } from '../models/set-drop-config';
+import { ToasterService } from '../toaster.service';
 
 
 @Component({
@@ -12,10 +14,10 @@ import {MatDialog, MatDialogRef, MAT_DIALOG_DATA} from '@angular/material';
 })
 export class DropConfigComponent implements OnInit {
 
-  displayedColumns: string[] = ['game', 'configName', 'dropDef', 'dropInterval','dropWidndow','dropPerWindow'];
+  displayedColumns: string[] = ['game', 'configName', 'dropDef', 'dropInterval','dropWidndow','dropPerWindow','setAll'];
   dropCofigs: MatTableDataSource<IDropConfig>;
 
-  constructor(private dropConfigService: DropConfigService, public dialog: MatDialog) { }
+  constructor(private dropConfigService: DropConfigService, private toast: ToasterService, public dialog: MatDialog) { }
 
   ngOnInit() {
     this.dropConfigService.GetConfigList().subscribe(t=>{
@@ -38,6 +40,15 @@ export class DropConfigComponent implements OnInit {
         });
       }
       
+    });
+  }
+
+  public setAll(gameId: number, configId: string): void {
+    let dropConf = new SetDropConfig();
+    dropConf.gameId = gameId;
+    dropConf.dropConfigId = configId;
+    this.dropConfigService.SetDropConfigAll(dropConf).subscribe(t=>{
+      this.toast.showInfo('Config setted')
     });
   }
 
