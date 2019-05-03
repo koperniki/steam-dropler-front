@@ -1,0 +1,38 @@
+<h1 mat-dialog-title>Add config</h1>
+<div mat-dialog-content>
+  <mat-form-field>
+    <input matInput [(ngModel)]="data.configName" placeholder="Set config name" required>
+  </mat-form-field>
+
+
+
+  <mat-form-field>
+    <mat-select placeholder="Select game" [(ngModel)]="data.gameId" required>
+      <mat-option value=232090>Kiling Floor 2</mat-option>
+      <mat-option value=218620>PAYDAY 2</mat-option>
+      <mat-option value=252490>RUST</mat-option>
+      <mat-option value=304930>Unturned</mat-option>
+    </mat-select>
+  </mat-form-field>
+
+  <mat-form-field>
+    <input matInput [(ngModel)]="data.dropDef" placeholder="Set dropId" type="number" required>
+  </mat-form-field>
+
+  <mat-form-field>
+    <input matInput [(ngModel)]="data.dropInterval" placeholder="Set drop interval" type="number" required>
+  </mat-form-field>
+
+  <mat-form-field>
+    <input matInput [(ngModel)]="data.dropWidndow" placeholder="Set drop winodow" type="number" required>
+  </mat-form-field>
+
+  <mat-form-field>
+    <input matInput [(ngModel)]="data.dropPerWindow" placeholder="Set drop per window" type="number" required>
+  </mat-form-field>
+
+</div>
+<div mat-dialog-actions>
+  <button mat-button (click)="onNoClick()">Cancel</button>
+  <button mat-button [mat-dialog-close]="data" cdkFocusInitial>Ok</button>
+</div>

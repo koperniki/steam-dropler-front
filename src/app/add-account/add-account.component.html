@@ -1,5 +1,16 @@
 <mat-toolbar>
   <mat-toolbar-row>
+      <button mat-icon-button [matMenuTriggerFor]="menu">
+          <mat-icon>more_vert</mat-icon>
+        </button>
+        <mat-menu #menu="matMenu">
+          <button mat-menu-item routerLink="../account">
+            <span>Accounts</span>
+          </button>
+          <button mat-menu-item routerLink="../drop-config">
+            <span>Drop config</span>
+          </button>
+        </mat-menu>   
     <span>New Account</span>
     <span class="spacer"></span>
     <button mat-button  (click)="saveAccount()"><mat-icon aria-hidden="false" aria-label="back">save</mat-icon></button>

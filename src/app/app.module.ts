@@ -4,7 +4,8 @@ import { HttpClientModule } from '@angular/common/http';
 
 import { MatTableModule, MatPaginatorModule, MatToolbarModule, 
 MatIconModule, MatButtonModule, MatFormFieldModule, MatInputModule, 
-MatOptionModule, MatSelectModule, MatSnackBarModule } from '@angular/material';
+MatOptionModule, MatSelectModule, MatSnackBarModule, MatDialogModule,
+MatMenuModule } from '@angular/material';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 
 import { AppComponent } from './app.component';
@@ -18,6 +19,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { AddAccountComponent } from './add-account/add-account.component';
 import { NodeComponent } from './node/node.component';
 import { AccountInfoComponent } from './account-info/account-info.component';
+import { DropConfigComponent, DialogDropConfig } from './drop-config/drop-config.component';
 
 
 @NgModule({
@@ -26,8 +28,12 @@ import { AccountInfoComponent } from './account-info/account-info.component';
     AccountComponent,
     AddAccountComponent,
     NodeComponent,
-    AccountInfoComponent
+    AccountInfoComponent,
+    DropConfigComponent,
+    DialogDropConfig,
+    
   ],
+  entryComponents: [DialogDropConfig, DropConfigComponent],
   imports: [
     BrowserModule,
     AppRoutingModule,
@@ -44,7 +50,9 @@ import { AccountInfoComponent } from './account-info/account-info.component';
     ReactiveFormsModule,
     MatOptionModule,
     MatSelectModule,
-    MatSnackBarModule
+    MatSnackBarModule,
+    MatDialogModule,
+    MatMenuModule
   ],
   providers: [RequesterService, AccountApiService, ToasterService],
   bootstrap: [AppComponent]
