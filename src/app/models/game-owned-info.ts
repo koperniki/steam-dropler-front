@@ -10,4 +10,7 @@ export interface GameOwnedInfo
 
         dropConfigName: string;
 
+        dropItems: number;
+
+        licenseInfo: string;
     }

@@ -24,7 +24,7 @@ export class AccountInfoComponent implements OnInit {
     public dialog: MatDialog,
     private location: Location) { }
 
-  displayedColumns: string[] = ['game', 'paymentMethod', 'dropCount', 'dropConfigName'];
+  displayedColumns: string[] = ['game', 'paymentMethod', 'dropCount', 'dropConfigName', 'licenseInfo'];
   gameInfo: MatTableDataSource<GameOwnedInfo>;
 
   accountId: string;
@@ -45,6 +45,7 @@ export class AccountInfoComponent implements OnInit {
         if (t === 1){
           this.accountApi.ReadAccount(this.accountId).subscribe(acc=>{
             this.account = acc;
+            this.gameInfo = new MatTableDataSource<GameOwnedInfo>(acc.gamesInfo);
           });
         }
       }     
