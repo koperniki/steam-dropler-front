@@ -6,3 +6,6 @@ table {
     flex: 1 1 auto;
   }
   
+  .padd {
+    padding: 5px;
+  }

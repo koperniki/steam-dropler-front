@@ -9,6 +9,7 @@ import { DropConfigService } from '../drop-config.service';
 import { MatDialog, MatDialogRef, MAT_DIALOG_DATA} from '@angular/material';
 import { IDropConfig } from '../models/drop-config';
 import { SetDropConfig } from '../models/set-drop-config';
+import { ToasterService } from '../toaster.service';
 
 @Component({
   selector: 'app-account-info',
@@ -22,6 +23,7 @@ export class AccountInfoComponent implements OnInit {
     private accountApi: AccountApiService, 
     private configApi: DropConfigService, 
     public dialog: MatDialog,
+    private toast: ToasterService,
     private location: Location) { }
 
   displayedColumns: string[] = ['game', 'paymentMethod', 'dropCount', 'dropConfigName', 'licenseInfo'];
@@ -31,11 +33,14 @@ export class AccountInfoComponent implements OnInit {
   account: IAccount;
 
   ngOnInit() {
-    this.accountId = this.route.snapshot.paramMap.get('id');
-    this.accountApi.ReadAccount(this.accountId).subscribe(t=>{
-      this.account = t;
-      this.gameInfo = new MatTableDataSource<GameOwnedInfo>(t.gamesInfo);
+    this.route.params.subscribe(params=>{
+      this.accountId = params['id'];
+      this.accountApi.ReadAccount(this.accountId).subscribe(t=>{
+        this.account = t;
+        this.gameInfo = new MatTableDataSource<GameOwnedInfo>(t.gamesInfo);
+      });
     });
+    
 
   }
 
@@ -51,6 +56,24 @@ export class AccountInfoComponent implements OnInit {
       }     
     );
   }
+
+  public updateChilds():void {
+    this.accountApi.UpdateFamilyInfo(this.accountId).subscribe(t=>
+      {      
+        this.accountApi.ReadAccount(this.accountId).subscribe(acc=>{
+          this.account = acc;
+          this.gameInfo = new MatTableDataSource<GameOwnedInfo>(acc.gamesInfo);
+        });
+      }     
+    );
+  }
+
+  public getParentGames(id: string): void {
+      this.accountApi.GetParentGame(id).subscribe(t=>{
+        this.toast.showInfo("Games updated");
+      }
+    );
+  } 
 
 
   public openDialog(gameId: number): void {

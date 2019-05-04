@@ -10,7 +10,7 @@ import {IAccount} from '../models/account';
   styleUrls: ['./account.component.css']
 })
 export class AccountComponent implements OnInit {
-  displayedColumns: string[] = ['userName', 'status', 'edit'];
+  displayedColumns: string[] = ['userName', 'status', 'dropCount','edit'];
   dataSource: MatTableDataSource<IAccount>;
 
   @ViewChild(MatPaginator) paginator: MatPaginator;
@@ -23,6 +23,10 @@ export class AccountComponent implements OnInit {
       this.dataSource.paginator = this.paginator;
       console.log(t);
     });
+  }
+
+  applyFilter(filterValue: string) {
+    this.dataSource.filter = filterValue.trim().toLowerCase();
   }
 
 }

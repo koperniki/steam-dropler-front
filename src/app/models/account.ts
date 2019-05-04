@@ -1,4 +1,5 @@
 import { GameOwnedInfo } from "./game-owned-info";
+import { IFamilySharingInfo } from "./famili-sharing-info";
 
 
 export interface IAccount
@@ -29,7 +30,11 @@ export interface IAccount
 
         mailConfigId: string;
 
-        gamesInfo: GameOwnedInfo[]
+        gamesInfo: GameOwnedInfo[];
+
+        familySharingInfos: IFamilySharingInfo[];
+
+        dropCount: number;
     }
 
     export class SteamAccount implements IAccount
@@ -60,5 +65,9 @@ export interface IAccount
 
         public mailConfigId: string;
 
-        public gamesInfo: GameOwnedInfo[]
+        public gamesInfo: GameOwnedInfo[];
+
+        public familySharingInfos: IFamilySharingInfo[];
+
+        public dropCount: number;
     }

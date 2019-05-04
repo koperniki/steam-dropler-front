@@ -5,7 +5,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { MatTableModule, MatPaginatorModule, MatToolbarModule, 
 MatIconModule, MatButtonModule, MatFormFieldModule, MatInputModule, 
 MatOptionModule, MatSelectModule, MatSnackBarModule, MatDialogModule,
-MatMenuModule } from '@angular/material';
+MatMenuModule, MatChipsModule } from '@angular/material';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 
 import { AppComponent } from './app.component';
@@ -57,7 +57,8 @@ import { DropConfigComponent, DialogDropConfig } from './drop-config/drop-config
     MatSelectModule,
     MatSnackBarModule,
     MatDialogModule,
-    MatMenuModule
+    MatMenuModule,
+    MatChipsModule
   ],
   providers: [RequesterService, AccountApiService, ToasterService],
   bootstrap: [AppComponent]

@@ -53,6 +53,16 @@
 
 
 </div>
+<div class="form-container "> 
+    
+  <button mat-button  (click)="updateChilds()">Update childs</button>
+<mat-chip-list>
+    <mat-chip *ngFor="let item of account.familySharingInfos"> 
+      <a [routerLink]="'../../account-info/'+item.steamAccountId"> {{item.steamName ? item.steamName : item.steamId}}</a>
+      <button mat-button   (click)="getParentGames(item.steamAccountId)"><mat-icon aria-hidden="false" aria-label="get games">add</mat-icon></button>
+    </mat-chip>
+  </mat-chip-list>
+</div>
 
 
 <table mat-table [dataSource]="gameInfo">

@@ -39,4 +39,12 @@ export class AccountApiService {
   public InitialLogin(id: string): Observable<number> {
     return this.requester.Request(this.handler, "initial_login", {id});
   }
+
+  public UpdateFamilyInfo(id: string): Observable<boolean> {
+    return this.requester.Request(this.handler, "update_family_info", {id});
+  }
+
+  public GetParentGame(id: string): Observable<boolean> {
+    return this.requester.Request(this.handler, "get_parent_game", {id});
+  }
 }
