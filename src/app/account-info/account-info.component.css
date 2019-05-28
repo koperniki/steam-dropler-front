@@ -13,3 +13,13 @@ table {
   .form-container {
     padding: 10px;
   }
+
+
+  .redeemInput {
+    display:inline-block;
+    width: 150px;
+  }
+
+  .redeemButton {
+    display:inline-block;
+  }

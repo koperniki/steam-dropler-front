@@ -10,7 +10,7 @@ import {IAccount} from '../models/account';
   styleUrls: ['./account.component.css']
 })
 export class AccountComponent implements OnInit {
-  displayedColumns: string[] = ['userName', 'status', 'dropCount','edit'];
+  displayedColumns: string[] = ['userName', 'status', 'dropCount','edit', 'balance', 'accountFlags'];
   dataSource: MatTableDataSource<IAccount>;
 
   @ViewChild(MatPaginator) paginator: MatPaginator;

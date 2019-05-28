@@ -10,6 +10,7 @@ import { MatDialog, MatDialogRef, MAT_DIALOG_DATA} from '@angular/material';
 import { IDropConfig } from '../models/drop-config';
 import { SetDropConfig } from '../models/set-drop-config';
 import { ToasterService } from '../toaster.service';
+import {MatBottomSheet, MatBottomSheetRef, MAT_BOTTOM_SHEET_DATA} from '@angular/material';
 
 @Component({
   selector: 'app-account-info',
@@ -24,7 +25,9 @@ export class AccountInfoComponent implements OnInit {
     private configApi: DropConfigService, 
     public dialog: MatDialog,
     private toast: ToasterService,
-    private location: Location) { }
+    private bottomSheet: MatBottomSheet,
+    private location: Location
+    ) { }
 
   displayedColumns: string[] = ['game', 'paymentMethod', 'dropCount', 'dropConfigName', 'licenseInfo'];
   gameInfo: MatTableDataSource<GameOwnedInfo>;
@@ -75,6 +78,9 @@ export class AccountInfoComponent implements OnInit {
     );
   } 
 
+  public openBottomSheet(): void {
+    this.bottomSheet.open(AccountInfoGameSheet, {data: {accountId: this.accountId }});
+  }
 
   public openDialog(gameId: number): void {
     this.configApi.GetConfigByApp(gameId).subscribe(t=>{
@@ -104,6 +110,26 @@ export class AccountInfoComponent implements OnInit {
 
 
 }
+
+@Component({
+  selector: 'account-info-game-sheet',
+  templateUrl: 'account-info-game-sheet.html',
+  styleUrls: ['./account-info.component.css']
+})
+export class AccountInfoGameSheet {
+  constructor( private bottomSheetRef: MatBottomSheetRef<AccountInfoGameSheet>, 
+    @Inject(MAT_BOTTOM_SHEET_DATA) public data: any, 
+    private accountApi: AccountApiService,
+    private toast: ToasterService) {}
+
+  redeemKey(key: string): void {
+    this.bottomSheetRef.dismiss();
+    this.accountApi.RedeemKey(key, this.data.accountId).subscribe(t=>{
+      this.toast.showInfo("Redeem key ok")
+    });
+  }
+}
+
 
 @Component({
   selector: 'dialog-set-drop-config',

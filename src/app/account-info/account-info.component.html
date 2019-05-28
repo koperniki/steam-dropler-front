@@ -11,8 +11,9 @@
             <span>Drop config</span>
           </button>
         </mat-menu>   
-    <span>{{account?.userName}}</span>
+    <span>{{account?.userName}} Balance:{{account?.balance}} {{account?.accountFlags}}</span>
     <span class="spacer"></span>
+    <button mat-button (click)="openBottomSheet()"><mat-icon aria-hidden="false" aria-label="add game">add_shopping_cart</mat-icon></button>
     <button mat-button  routerLink="../../account"><mat-icon aria-hidden="false" aria-label="back">backspace</mat-icon></button>
   </mat-toolbar-row>
 </mat-toolbar>

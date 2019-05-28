@@ -5,7 +5,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { MatTableModule, MatPaginatorModule, MatToolbarModule, 
 MatIconModule, MatButtonModule, MatFormFieldModule, MatInputModule, 
 MatOptionModule, MatSelectModule, MatSnackBarModule, MatDialogModule,
-MatMenuModule, MatChipsModule } from '@angular/material';
+MatMenuModule, MatChipsModule, MatBottomSheetModule } from '@angular/material';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 
 import { AppComponent } from './app.component';
@@ -18,7 +18,7 @@ import { ToasterService } from './toaster.service';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { AddAccountComponent } from './add-account/add-account.component';
 import { NodeComponent } from './node/node.component';
-import { AccountInfoComponent, DialogSetDropConfig } from './account-info/account-info.component';
+import { AccountInfoComponent, DialogSetDropConfig, AccountInfoGameSheet } from './account-info/account-info.component';
 import { DropConfigComponent, DialogDropConfig } from './drop-config/drop-config.component';
 
 
@@ -31,13 +31,15 @@ import { DropConfigComponent, DialogDropConfig } from './drop-config/drop-config
     AccountInfoComponent,
     DropConfigComponent,
     DialogDropConfig,
-    DialogSetDropConfig
+    DialogSetDropConfig,
+    AccountInfoGameSheet
   ],
   entryComponents: [
     DialogDropConfig, 
     DropConfigComponent, 
     DialogSetDropConfig, 
-    AccountInfoComponent 
+    AccountInfoComponent,
+    AccountInfoGameSheet 
   ],
   imports: [
     BrowserModule,
@@ -58,7 +60,8 @@ import { DropConfigComponent, DialogDropConfig } from './drop-config/drop-config
     MatSnackBarModule,
     MatDialogModule,
     MatMenuModule,
-    MatChipsModule
+    MatChipsModule,
+    MatBottomSheetModule
   ],
   providers: [RequesterService, AccountApiService, ToasterService],
   bootstrap: [AppComponent]

@@ -11,10 +11,13 @@ import { IMafileConfig, MaFileConfig } from './models/mafile-config';
   providedIn: 'root',
 })
 export class AccountApiService {
+ 
 
   readonly handler: string = "account";
 
   constructor(private requester: RequesterService) { }
+
+
 
   public GetAccountList(): Observable<IAccount[]> {
     return this.requester.Request(this.handler, "list", {});
@@ -47,4 +50,9 @@ export class AccountApiService {
   public GetParentGame(id: string): Observable<boolean> {
     return this.requester.Request(this.handler, "get_parent_game", {id});
   }
+
+  public RedeemKey(key: string, id: string): Observable<boolean> {
+    return this.requester.Request(this.handler, "redeem_key", { Key: key, Id: id});
+  }
+
 }

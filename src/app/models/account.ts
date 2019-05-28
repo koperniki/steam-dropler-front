@@ -35,6 +35,10 @@ export interface IAccount
         familySharingInfos: IFamilySharingInfo[];
 
         dropCount: number;
+
+        balance: string;
+
+        accountFlags: string;
     }
 
     export class SteamAccount implements IAccount
@@ -70,4 +74,8 @@ export interface IAccount
         public familySharingInfos: IFamilySharingInfo[];
 
         public dropCount: number;
+
+        public balance: string;
+
+        public accountFlags: string;
     }

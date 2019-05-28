@@ -30,6 +30,18 @@
       <td mat-cell *matCellDef="let element"> <a [routerLink]="'/account-info/'+element.id">{{element.userName}} </a></td>
     </ng-container>
 
+
+
+    <ng-container matColumnDef="balance">
+      <th mat-header-cell *matHeaderCellDef> Balance </th>
+      <td mat-cell *matCellDef="let element"> {{element.balance}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="accountFlags">
+      <th mat-header-cell *matHeaderCellDef> Flags </th>
+      <td mat-cell *matCellDef="let element"> {{element.accountFlags}} </td>
+    </ng-container>
+
     <!-- Weight Column -->
     <ng-container matColumnDef="status">
       <th mat-header-cell *matHeaderCellDef> Status </th>
