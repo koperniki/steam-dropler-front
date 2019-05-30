@@ -11,6 +11,8 @@ import { IMafileConfig, MaFileConfig } from './models/mafile-config';
   providedIn: 'root',
 })
 export class AccountApiService {
+  
+  
  
 
   readonly handler: string = "account";
@@ -53,6 +55,10 @@ export class AccountApiService {
 
   public RedeemKey(key: string, id: string): Observable<boolean> {
     return this.requester.Request(this.handler, "redeem_key", { Key: key, Id: id});
+  }
+
+  public UpdateItems(id: string) {
+    return this.requester.Request(this.handler, "update_items", {id});
   }
 
 }

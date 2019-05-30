@@ -82,6 +82,12 @@ export class AccountInfoComponent implements OnInit {
     this.bottomSheet.open(AccountInfoGameSheet, {data: {accountId: this.accountId }});
   }
 
+  public UpdateItems(): void {
+    this.accountApi.UpdateItems(this.accountId).subscribe(t=>{
+      this.toast.showInfo("Items updated")
+    });
+  }
+
   public openDialog(gameId: number): void {
     this.configApi.GetConfigByApp(gameId).subscribe(t=>{
       const dialogRef = this.dialog.open(DialogSetDropConfig, {
