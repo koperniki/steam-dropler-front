@@ -6,3 +6,10 @@
 <button mat-button class = "redeemButton" (click)="redeemKey(redeemInput.value)">Redeem key</button>  
 
 
+<mat-form-field>
+      <input  #buygameself class="redeemInput" matInput placeholder="app id" type="number">
+</mat-form-field>
+
+<button mat-button class = "redeemButton" (click)="buySelf(buygameself.value)">Buy game self</button> 
+
+

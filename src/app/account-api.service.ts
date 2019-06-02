@@ -57,6 +57,10 @@ export class AccountApiService {
     return this.requester.Request(this.handler, "redeem_key", { Key: key, Id: id});
   }
 
+  public BuySelf(appId: number, id: string): Observable<boolean> {
+    return this.requester.Request(this.handler, "buy_game", { appId: appId, Id: id});
+  }
+
   public UpdateItems(id: string) {
     return this.requester.Request(this.handler, "update_items", {id});
   }

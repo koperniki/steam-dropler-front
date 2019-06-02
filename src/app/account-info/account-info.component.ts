@@ -134,6 +134,13 @@ export class AccountInfoGameSheet {
       this.toast.showInfo("Redeem key ok")
     });
   }
+
+  buySelf(appId: number): void {
+    this.bottomSheetRef.dismiss();
+    this.accountApi.BuySelf(appId, this.data.accountId).subscribe(t=>{
+      this.toast.showInfo("Game buyed")
+    });
+  }
 }
 
 
